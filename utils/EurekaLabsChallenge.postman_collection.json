@@ -1,0 +1,304 @@
+{
+	"info": {
+		"_postman_id": "8cbc94d9-3059-4fe1-8826-e814ff5204bd",
+		"name": "EurekaLabsChallenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "USERS: gets users from non persistent array",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url2}}/usuario",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USERS: gets user by Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url2}}/usuario/007",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"usuario",
+						"007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USERS: creates user in non persistent array",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Consu",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "consucardona@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url2}}/usuario",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"usuario"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Gustavo",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "consugus@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USERS: updates users from non persistent array with new data",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Gustavito",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "consugus@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url2}}/usuario/007",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"usuario",
+						"007"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "USERS: delete user by Id from non persistent array",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url2}}/usuario/007?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwNyIsIm5hbWUiOiJHdXN0YXZvIiwiZW1haWwiOiJjb25zdWd1c0BnbWFpbC5jb20iLCJpYXQiOjE1NzAyMDYxNTAsImV4cCI6MTU3MDIwNjIzNn0.mUYcdjcqbqEEafdEjxMWroIsVm8a-BQqWHWqRSkcbcU",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"usuario",
+						"007"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjAwNyIsIm5hbWUiOiJHdXN0YXZvIiwiZW1haWwiOiJjb25zdWd1c0BnbWFpbC5jb20iLCJpYXQiOjE1NzAyMDYxNTAsImV4cCI6MTU3MDIwNjIzNn0.mUYcdjcqbqEEafdEjxMWroIsVm8a-BQqWHWqRSkcbcU"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN: validates user in app",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a9db8f00-ad17-4e7b-a12c-2630d1311d2d",
+						"exec": [
+							"let resp = pm.response.json();",
+							"if(resp.ok){",
+							"    let token = resp.token;",
+							"    pm.environment.set(\"token\", token);",
+							"} else {",
+							"    console.log(\"No se actualizó el token\");",
+							"}",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "consugus@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url2}}/login",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "STOCKS: get stock values from Alpha Avantage",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "company",
+							"value": "FB",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url2}}/cotization?company=bf",
+					"host": [
+						"{{url2}}"
+					],
+					"path": [
+						"cotization"
+					],
+					"query": [
+						{
+							"key": "company",
+							"value": "bf"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

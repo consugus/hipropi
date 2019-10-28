@@ -1,0 +1,25 @@
+{
+  "name": "eurekachallenge",
+  "version": "1.0.0",
+  "description": "Challenge to see if i am accepted at EurekaLabs",
+  "main": "hipropi.js",
+  "scripts": {
+    "start": "node server/server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gustavo Jorge Rios",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "colors": "^1.4.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.3",
+    "mongoose-unique-validator": "^2.0.3",
+    "morgan": "^1.9.1",
+    "rotating-file-stream": "^1.4.4",
+    "underscore": "^1.9.1"
+  }
+}
