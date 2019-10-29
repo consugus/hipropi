@@ -36,7 +36,11 @@ app.post('/login', (req, res) => {
             });
         }
 
-        let token = jwt.sign(_.pick(user, "id", "name", "email"), process.env.SECRET, {expiresIn: process.env.TOKEN_EXPIRATION_TIME}); // expires in 24 hs
+        let payload = { user: _.pick(user, "id", "name", "email", "role") };
+        let secret = process.env.SECRET;
+        let expiration = {expiresIn: process.env.TOKEN_EXPIRATION_TIME}
+
+        let token = jwt.sign( payload, secret, expiration);
         res.status(200).json({
             ok: true,
             email: body.email,

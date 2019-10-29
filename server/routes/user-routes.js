@@ -4,7 +4,7 @@ const { users } = require('../config/config');
 const bcrypt = require('bcrypt');
 const User = require('../models/user-model');
 const _ = require('underscore');
-const { tokenVerify } = require('../middlewares/authentication');
+const { tokenVerify, verifyAdmin_Token } = require('../middlewares/authentication');
 
 
 
@@ -12,7 +12,8 @@ const { tokenVerify } = require('../middlewares/authentication');
 //         Devolver todos los usuarios
 // ================================================
 
-app.get( '/usuario', tokenVerify, (req, res) => {
+app.get( '/usuario', [tokenVerify], (req, res) => {
+// app.get( '/usuario', [tokenVerify], (req, res) => {
 
     let tmp = [];
     for( let i = 0 ; i < users.length ; i++ ){
@@ -35,7 +36,7 @@ app.get( '/usuario', tokenVerify, (req, res) => {
 // ================================================
 //        Devolver un usuario, dado un ID
 // ================================================
-app.get('/usuario/:id', (req, res) => {
+app.get('/usuario/:id', [tokenVerify, verifyAdmin_Token], (req, res) => {
 
     let id = req.params.id;
     let user = new User();
