@@ -25,7 +25,9 @@ let tokenVerify = (req, res, next) =>{
 
 let verifyAdmin_Token = (req, res, next) => {
 
-    if(user.role !=="admin") return res.status(401).json({
+    console.log(user.user.role);
+
+    if(user.user.role !=="admin") return res.status(401).json({
         ok:false,
         err: {
             message: "No tiene los privilegios de administrador para realizar la tarea"
